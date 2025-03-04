@@ -9,5 +9,5 @@ class announce extends Model
 {
     /** @use HasFactory<\Database\Factories\AnnounceFactory> */
     use HasFactory;
-    protected $fillable=["tilte","description"];
+    protected $fillable=["title","description"];
 }

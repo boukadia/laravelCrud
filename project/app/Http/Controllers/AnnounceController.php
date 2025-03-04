@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\announce;
 use App\Http\Requests\StoreannounceRequest;
 use App\Http\Requests\UpdateannounceRequest;
+use Illuminate\Http\Request;
 
 class AnnounceController extends Controller
 {
@@ -14,22 +15,33 @@ class AnnounceController extends Controller
     public function index()
     {
         //
+        
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        // dd($request);
+        $request->validate(["title"=>'required',
+        "description"=>'required']);
+        announce::create([
+            'title'=>$request->title,
+        'description'=>$request->description]);
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreannounceRequest $request)
+    public function store()
     {
-        //
+        $announces=announce::all();
+        return view("index",["announces" => $announces]);
+    }
+    public function form(){
+        return view("formInser");
     }
 
     /**
