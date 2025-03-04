@@ -55,24 +55,30 @@ class AnnounceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(announce $announce)
+    public function edit( $id)
     {
-        //
+        $announce=announce::find($id);
+
+        return view("formUpdate",["announce"=>$announce]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateannounceRequest $request, announce $announce)
+    public function update(Request $request,$id)
     {
-        //
+        announce::where('id',$id)->update([
+            "title"=>$request->title,
+        "description"=>$request->description
+    ]);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(announce $announce)
     {
-        //
+        announce::where('id',$announce->id)->delete();
     }
 }

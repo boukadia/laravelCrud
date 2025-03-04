@@ -22,8 +22,8 @@
                 <td>{{ $announce->title }}</td>
                 <td>{{ $announce->description }}</td>
                 <td>
-                    <a href="">modifier</a>    
-                    <a href="">delete</a>
+                    <a href="{{ route("edit",$announce->id) }}">modifier</a>    
+                    <a href="{{ route("delete",$announce) }}">delete</a>
                 </td>
             </tr>
             
