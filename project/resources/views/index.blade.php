@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="/login">login</a>
+    <a href="/register">register</a>
+    <a href="/logOut">logout</a>
     <a href="/form">ajouter</a>
     <table>
         <thead>

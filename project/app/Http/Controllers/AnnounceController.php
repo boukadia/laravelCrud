@@ -6,6 +6,7 @@ use App\Models\announce;
 use App\Http\Requests\StoreannounceRequest;
 use App\Http\Requests\UpdateannounceRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnnounceController extends Controller
 {
@@ -37,8 +38,14 @@ class AnnounceController extends Controller
      */
     public function store()
     {
-        $announces=announce::all();
-        return view("index",["announces" => $announces]);
+        $user=Auth::user();
+        if($user){
+            $announces=announce::all();
+            return view("index",["announces" => $announces]);
+        }
+        else {
+            echo "non";
+        }
     }
     public function form(){
         return view("formInser");
